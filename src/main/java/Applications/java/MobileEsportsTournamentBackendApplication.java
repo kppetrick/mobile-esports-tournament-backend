@@ -1,4 +1,4 @@
-package com.example.mobile_esports_tournament_backend;
+package Applications.java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

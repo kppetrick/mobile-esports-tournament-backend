@@ -1,4 +1,4 @@
-package com.example.mobile_esports_tournament_backend;
+package Applications.java;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
