@@ -50,7 +50,7 @@ Once the backend is running, it provides the following functionalities:
 
 ## Directory Structure
 Here’s an overview of the project’s structure:
-
+```
 /mobile-esports-tournament-backend
 ├── /src/main/java            # Main Java source files
 │   ├── /controllers          # REST API controllers
@@ -64,7 +64,7 @@ Here’s an overview of the project’s structure:
 ├── /target                   # Compiled files after building
 ├── pom.xml                   # Maven configuration file
 └── README.md                 # Documentation (this file)
-
+```
 ## Key Folders and Files
 
 - **/src/main/java/controllers:** Contains all the API endpoint definitions.
