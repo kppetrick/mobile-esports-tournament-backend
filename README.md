@@ -1,56 +1,85 @@
-# Full Stack Overview
+# Mobile Esports Tournament Backend
 
-## Backend
+This repository contains the backend for the mobile esports tournament platform. Built using Java with Spring Boot, it handles API requests, matchmaking, and database operations to power the platform's functionalities.
 
-The backend is the core of the application, handling business logic, API endpoints, matchmaking algorithms, and database interactions. It is designed for scalability and real-time features.
+## Setup
 
-### Recommended Stack
-- **Language:** Java
-- **Framework:** Spring Boot
-- **Build Tool:** Maven
+### 1. Clone the repository
+Clone this repository to your local machine:
+```bash
+git clone https://github.com/kppetrick/mobile-esports-tournament-backend.git
+```
 
-### Key Features
-- Implements RESTful APIs and/or GraphQL for frontend communication.
-- Supports real-time features such as WebSocket for live updates.
-- Integrates with third-party APIs like Stripe for secure payment processing.
+### 2. Navigate to the project directory
+Go to the project folder:
+```bash
+cd mobile-esports-tournament-backend
+```
 
-## Frontend (Website)
+### 3. Install dependencies
+Ensure you have Maven installed and run the following command to download the necessary dependencies:
+```bash
+mvn install
+```
 
-The frontend web interface is built to be modern and responsive, providing a seamless user experience.
+### 4. Configure the database
+Set up a PostgreSQL database and update the `application.properties` file with your database credentials:
+```properties
+spring.datasource.url=jdbc:postgresql://<your-database-url>:<port>/<database-name>
+spring.datasource.username=<your-username>
+spring.datasource.password=<your-password>
+```
 
-### Recommended Stack
-- **Framework:** ReactJS
+### 5. Run the application
+Start the backend server:
+```bash
+mvn spring-boot:run
+```
+The server will start at `http://localhost:8080`.
 
-### Key Features
-- Communicates with the backend via REST APIs or GraphQL.
-- Fetches real-time tournament updates through WebSocket or polling.
-- Provides an intuitive interface for managing user accounts, teams, and tournaments.
+## Usage
 
-## Mobile App
+Once the backend is running, it provides the following functionalities:
 
-The mobile application extends the platform's accessibility to iOS and Android devices.
+- **User Management:** APIs for user registration, authentication, and profile management.
+- **Tournament Management:** Endpoints to create, update, and manage tournaments, teams, and schedules.
+- **Matchmaking:** Real-time matchmaking logic for competitive play.
+- **Payments:** Secure payment handling using Stripe API.
+- **Live Updates:** WebSocket support for live match updates and notifications.
+- **Statistics:** Serve player stats, leaderboards, and tournament details to the frontend and mobile app.
 
-### Recommended Stack
-- **Framework:** Flutter
+## Directory Structure
+Here’s an overview of the project’s structure:
 
-### Key Features
-- Connects to the backend through REST APIs.
-- Offers push notifications using Firebase or direct WebSocket integration.
-- Ensures cross-platform compatibility and a native-like experience.
+/mobile-esports-tournament-backend
+├── /src/main/java            # Main Java source files
+│   ├── /controllers          # REST API controllers
+│   ├── /services             # Business logic and service layer
+│   ├── /repositories         # Data access layer for database interaction
+│   ├── /models               # Entity and data models
+│   └── Application.java      # Main Spring Boot application entry point
+├── /src/main/resources       # Configuration files
+│   ├── application.properties # Spring Boot configuration file
+│   └── static                # Static resources (if any)
+├── /target                   # Compiled files after building
+├── pom.xml                   # Maven configuration file
+└── README.md                 # Documentation (this file)
 
-## Database
+## Key Folders and Files
 
-### Recommended Database
-- **Type:** Relational Database
-- **System:** PostgreSQL
+- **/src/main/java/controllers:** Contains all the API endpoint definitions.
+- **/src/main/java/services:** Houses business logic, including matchmaking and payment handling.
+- **/src/main/java/repositories:** Interfaces for interacting with the PostgreSQL database.
+- **/src/main/java/models:** Defines the data models and entities used throughout the application.
+- **application.properties:** Configuration file for database connections and other environment settings.
 
-### Key Features
-- Stores user data, tournament records, player statistics, and rankings.
-- Ensures data integrity and supports complex queries for leaderboard generation and matchmaking.
+## Contributing
 
-## Additional Tools
+We welcome contributions! Follow these steps to contribute:
 
-- **Redis:** For caching frequently accessed data like leaderboards and ongoing matches to improve performance.
-- **Stripe API:** For handling payments and distributing cash prizes securely.
-- **AWS/GCP:** For scalable and reliable hosting of backend services, ensuring high availability and performance.
+1. Fork this repository to your GitHub account.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with clear messages.
+4. Push your changes to your forked repository.
+5. Open a pull request describing your changes.
 
