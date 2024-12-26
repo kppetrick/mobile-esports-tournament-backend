@@ -67,11 +67,14 @@ Here’s an overview of the project’s structure:
 ```
 ## Key Folders and Files
 
-- **/src/main/java/controllers:** Contains all the API endpoint definitions.
-- **/src/main/java/services:** Houses business logic, including matchmaking and payment handling.
-- **/src/main/java/repositories:** Interfaces for interacting with the PostgreSQL database.
-- **/src/main/java/models:** Defines the data models and entities used throughout the application.
-- **application.properties:** Configuration file for database connections and other environment settings.
+### Project Structure
+
+- `/src/main/java/controllers`: Contains all the API endpoint definitions.
+- `/src/main/java/services`: Houses business logic, including matchmaking and payment handling.
+- `/src/main/java/repositories`: Interfaces for interacting with the PostgreSQL database.
+- `/src/main/java/models`: Defines the data models and entities used throughout the application.
+- `application.properties`: Configuration file for database connections and other environment settings.
+
 
 ## Contributing
 
