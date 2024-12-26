@@ -66,9 +66,6 @@ Here’s an overview of the project’s structure:
 └── README.md                 # Documentation (this file)
 ```
 ## Key Folders and Files
-
-### Project Structure
-
 - `/src/main/java/controllers`: Contains all the API endpoint definitions.
 - `/src/main/java/services`: Houses business logic, including matchmaking and payment handling.
 - `/src/main/java/repositories`: Interfaces for interacting with the PostgreSQL database.
