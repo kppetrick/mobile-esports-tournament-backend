@@ -17,6 +17,14 @@ public class Player {
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Deck> decks = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "tournament_players",
+            joinColumns = @JoinColumn(name = "player_id"),
+            inverseJoinColumns = @JoinColumn(name = "tournament_id")
+    )
+    private List<Tournament> tournaments;
+
     // Getters and setters...
 
     public List<Deck> getDecks() {

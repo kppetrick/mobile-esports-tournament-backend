@@ -19,14 +19,12 @@ public class PlayerStats {
     @JoinColumn(name = "tournament_id", nullable = false)
     private Tournament tournament;
 
-    private Integer matchesPlayed = 0;
-    private Integer matchesWon = 0;
-    private Integer matchesLost = 0;
-    private Integer totalDamage = 0;
-    private Integer totalKills = 0;
-    private Integer rankingPoints = 0;
-    private LocalDateTime createdAt;
+    // Fields like matches_played, matches_won, etc.
+    private int matchesPlayed;
+    private int matchesWon;
+    private int matchesLost;
 
     // Getters and setters...
 }
+
 
