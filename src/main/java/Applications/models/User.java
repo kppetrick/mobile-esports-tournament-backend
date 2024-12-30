@@ -1,55 +1,48 @@
 package Applications.models;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
 public class User {
 
-    // === Primary Key ===
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // === User Details ===
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password_hash") // Ensures the field maps to password_hash in the DB
-    private String password; // For non-OAuth2 users
+    @Column(nullable = false)
+    private String passwordHash; // Store the hashed password
 
-    // === OAuth2 Fields ===
-    private String oauth2Provider;        // e.g., Google, Facebook
-    private String oauth2ProviderId;     // Provider-specific user ID
+    private String firstName;
+    private String lastName;
 
-    // === Relationships ===
-    @OneToMany(mappedBy = "user")
-    private List<Tournament> tournaments;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_tournaments",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "tournament_id")
-    )
-    private Set<Tournament> tournamentsParticipated;
-
-    // === Constructors ===
-    public User() {
-        // Default constructor for JPA
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
 
-    // === Getters and Setters ===
+    // Getters and Setters
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -68,43 +61,43 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() { // Getter for passwordHash
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) { // Setter for passwordHash
+        this.passwordHash = passwordHash;
     }
 
-    public String getOauth2Provider() {
-        return oauth2Provider;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setOauth2Provider(String oauth2Provider) {
-        this.oauth2Provider = oauth2Provider;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getOauth2ProviderId() {
-        return oauth2ProviderId;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setOauth2ProviderId(String oauth2ProviderId) {
-        this.oauth2ProviderId = oauth2ProviderId;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public List<Tournament> getTournaments() {
-        return tournaments;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTournaments(List<Tournament> tournaments) {
-        this.tournaments = tournaments;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Set<Tournament> getTournamentsParticipated() {
-        return tournamentsParticipated;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setTournamentsParticipated(Set<Tournament> tournamentsParticipated) {
-        this.tournamentsParticipated = tournamentsParticipated;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
